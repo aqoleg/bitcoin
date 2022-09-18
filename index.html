@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>bitcoin</title>
+
+        <meta charset="utf-8" />
+
+        <meta name="description" content="java bitcoin" />
+        <meta name="keywords" content="aqoleg java bitcoin" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#FFFFFF" />
+
+        <link rel="icon" href="https://aqoleg.com/icon.png" />
+        <style>
+            body {
+                margin: 32px auto;
+                width: 90%;
+                max-width: 1000px;
+                font-family: monospace;
+                overflow-wrap: break-word;
+            }
+            .code {
+                margin: 16px;
+                padding: 4px;
+                background: #F0F0F0;
+            }
+            a {
+                color: black;
+                outline: 0;
+            }
+            a:focus {
+                color: blue;
+            }
+            @media (hover: hover) {
+                a:hover {
+                    color: blue;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>bitcoin</h1>
+        <p>This is an absolutely independent bitcoin research project.
+            The idea of bitcoin is about verification, not trust.
+            <a target="_blank" rel="noopener" href="https://aqoleg.com">I</a>
+            am going to check all of this.
+            It includes java classes for hash functions, elliptic cryptography, bitcoin addresses,
+            hd keys (bip32/39), node communication messages, transaction builder and a console wallet.
+            <a target="_blank" rel="noopener" href="https://aqoleg.com/files/?path=/bitcoin">Everything</a>
+            is written from scratch without using third-party code.
+        <h2>build</h2>
+        <p>Create source and output directories.</p>
+        <p class="code">$ mkdir -p src/com/aqoleg/bitcoin src/com/aqoleg/crypto src/com/aqoleg/data
+            src/com/aqoleg/keys src/com/aqoleg/messages src/com/aqoleg/utils out</p>
+        <p>Download
+            <a target="_blank" rel="noopener"
+               href="https://aqoleg.com/files/?path=/bitcoin/src">source files</a>.</p>
+        <p class="code">$ cd src/com/aqoleg/bitcoin<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/bitcoin/files.txt<br />
+            $ cd ../crypto<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/crypto/files.txt<br />
+            $ cd ../data<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/data/files.txt<br />
+            $ cd ../keys<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/keys/files.txt<br />
+            $ cd ../messages<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/messages/files.txt<br />
+            $ cd ../utils<br />
+            $ wget -i https://bitcoin.aqoleg.com/src/com/aqoleg/utils/files.txt<br />
+            $ cd ../../../../</p>
+        <p>Compile.</p>
+        <p class="code">$ javac -d out src/com/aqoleg/*/*.java</p>
+        <p>Create jar file.</p>
+        <p class="code">$ cd out<br />
+            $ jar cfe ../Bitcoin.jar com.aqoleg.bitcoin.Main ./<br />$ cd ../</p>
+        <p>Directories <em>out</em>, <em>src</em> and file <em>Bitcoin.jar</em> will remain after all.</p>
+        <h2>test</h2>
+        <p>Build the jar file as described above, or download
+            <a target="_blank" rel="noopener"
+               href="https://bitcoin.aqoleg.com/Bitcoin.jar">Bitcoin.jar</a>.</p>
+        <p class="code">$ wget bitcoin.aqoleg.com/Bitcoin.jar</p>
+        <p>Create test and output directories.</p>
+        <p class="code">$ mkdir -p test/com/aqoleg/crypto/test test/com/aqoleg/data/test
+            test/com/aqoleg/keys/test test/com/aqoleg/messages/test test/com/aqoleg/utils/test out</p>
+        <p>Download
+            <a target="_blank" rel="noopener"
+               href="https://aqoleg.com/files/?path=/bitcoin/test">test files</a>.</p>
+        <p class="code">$ cd test/com/aqoleg/crypto/test<br />
+            $ wget -i https://bitcoin.aqoleg.com/test/com/aqoleg/crypto/test/files.txt<br />
+            $ cd ../../data/test<br />
+            $ wget -i https://bitcoin.aqoleg.com/test/com/aqoleg/data/test/files.txt<br />
+            $ cd ../../keys/test<br />
+            $ wget -i https://bitcoin.aqoleg.com/test/com/aqoleg/keys/test/files.txt<br />
+            $ cd ../../messages/test<br />
+            $ wget -i https://bitcoin.aqoleg.com/test/com/aqoleg/messages/test/files.txt<br />
+            $ cd ../../utils/test<br />
+            $ wget -i https://bitcoin.aqoleg.com/test/com/aqoleg/utils/test/files.txt<br />
+            $ cd ../../<br />
+            $ wget bitcoin.aqoleg.com/test/com/aqoleg/Test.java<br />
+            $ cd ../../../</p>
+        <p>Compile.</p>
+        <p class="code">$ javac -d out -cp Bitcoin.jar test/com/aqoleg/*/test/*.java
+            test/com/aqoleg/Test.java</p>
+        <p>Run one test or all tests and read results.</p>
+        <p class="code">$ java -cp out:Bitcoin.jar com.aqoleg.messages.test.ScriptTest<br />
+            $ java -cp out:Bitcoin.jar com.aqoleg.Test</p>
+        <p>Directories <em>out</em>, <em>test</em>, <em>~/.bitcoin.aqoleg.com/</em>
+            and file <em>Bitcoin.jar</em> will remain after all.</p>
+        <h2>use</h2>
+        <p>Build the jar file as described above, or download
+            <a target="_blank" rel="noopener"
+               href="https://bitcoin.aqoleg.com/Bitcoin.jar">Bitcoin.jar</a>.</p>
+        <p class="code">$ wget bitcoin.aqoleg.com/Bitcoin.jar</p>
+        <p>Launch the wallet.</p>
+        <p class="code">$ java -jar Bitcoin.jar</p>
+        <p>Use the additional functions below. All of them can be run without arguments.</p>
+        <p>Generate new random key pair or create key pair from the decimal or hex private key
+            (compressed or uncompressed). Decode private key from wif.
+            Be aware about security of your keys!</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.keys.KeyPair compressed<br />
+            $ java -cp Bitcoin.jar com.aqoleg.keys.KeyPair uncompressed<br />
+            $ java -cp Bitcoin.jar com.aqoleg.keys.KeyPair 1 compressed<br />
+            $ java -cp Bitcoin.jar com.aqoleg.keys.KeyPair 0x10 uncompressed<br />
+            $ java -cp Bitcoin.jar com.aqoleg.keys.KeyPair
+            KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU7BLjN42GK</p>
+        <p>Print info about public key (compressed or uncompressed).</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.keys.PublicKey
+            0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352</p>
+        <p>Check the bitcoin address.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.keys.Address 14Wu4nRjjTNggBfoZ4Md8t1gZv788cdvqT</p>
+        <p>Create, decode hd keys.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.keys.HdKeyPair passphrase mnemonic m/1/1h<br />
+            $ java -cp Bitcoin.jar com.aqoleg.keys.HdKeyPair
+            xprv9vqn8EWFNT8jkGZsM51WSqWPYjRARtMZBEUMGT4vs9BaEVvvyahcgZND4wome9gN2rnoxjuNw48Po7w27pkw9PyFEL5Q5WrERpmjJzZU6jm</p>
+        <p>Decode bitcoin script.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.messages.Script
+            473044022062a50c4373f0cad58787a4449e0a63a1cd19abe36a0e002a54487ff27d813668022026401ea091ac26bd09a2947acbe7a2b638cb2b98da19dc6c0e36de80a96430e90121039f843adf502df5c13c5f3a851a76bd9de980fbc63a84864b8d70a471030f7520</p>
+        <p>Decode transaction.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.messages.Transaction
+            01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000</p>
+        <p>Download, print block.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.data.BlockLoader
+            000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</p>
+        <p>Print info about bitcoin nodes.</p>
+        <p class="code">$ java -cp Bitcoin.jar com.aqoleg.data.Addresses 20</p>
+        <p>Directory <em>~/.bitcoin.aqoleg.com/</em> with downloaded blocks and addresses,
+            and file <em>Bitcoin.jar</em> will remain after all.</p>
+        <script>
+            window.onload = function () {
+                var language = null;
+                if (typeof navigator.language === 'string') {
+                    language = navigator.language.substr(0, 2);
+                }
+                fetch('https://aqoleg.com/log', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        user: 'bitcoin',
+                        language: language,
+                        timeZone: new Date().getTimezoneOffset() / (-60)
+                    })
+                }).catch(console.error);
+            };
+        </script>
+    </body>
+</html>
